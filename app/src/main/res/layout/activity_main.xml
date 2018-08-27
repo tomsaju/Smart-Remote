@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    tools:context="ir.iot.smartremote.MainActivity">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="70dp"
+       android:id="@+id/buttonPanel">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="20sp"
+          android:text="Connected"
+          android:layout_marginLeft="15dp"
+          android:layout_centerVertical="true"
+          android:id="@+id/connectionSTatusTextView"
+          android:textColor="@android:color/holo_green_dark"/>
+
+
+
+   </RelativeLayout>
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/mainList"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
