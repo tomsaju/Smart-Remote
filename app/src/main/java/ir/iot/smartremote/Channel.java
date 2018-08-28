@@ -15,6 +15,9 @@ public class Channel {
         this.imageUrl = imageUrl;
     }
 
+    public Channel() {
+    }
+
     public int getIndex() {
         return index;
     }

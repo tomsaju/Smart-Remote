@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartRemote.iml" filepath="$PROJECT_DIR$/SmartRemote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Smart-Remote.iml" filepath="$PROJECT_DIR$/Smart-Remote.iml" />
+      <module fileurl="file://D:\Projects\Smart Remote\Smart-Remote\SmartRemote.iml" filepath="D:\Projects\Smart Remote\Smart-Remote\SmartRemote.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

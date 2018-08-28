@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "551536249235",
+    "firebase_url": "https://tomsaju-10c1b.firebaseio.com",
+    "project_id": "tomsaju-10c1b",
+    "storage_bucket": "tomsaju-10c1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551536249235:android:d522f7713612e0d2",
+        "android_client_info": {
+          "package_name": "ir.iot.smartremote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551536249235-arpaelb8809c4flk9ol8cjc7mjk85a1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.iot.smartremote",
+            "certificate_hash": "a23df4442218bac39091aa91e7929de026e55c88"
+          }
+        },
+        {
+          "client_id": "551536249235-gb28bqf2g1mjelv5im2e0jqimd3lauk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0dUVepy60Q_spy_OiEKPbSFoabn0zFDs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551536249235-csch0og63a0p1s159a1aq9m7b3pv3ulc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

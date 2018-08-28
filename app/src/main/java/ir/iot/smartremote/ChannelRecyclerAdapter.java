@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class ChannelRecyclerAdapter extends RecyclerView.Adapter<ChannelRecyclerAdapter.ChannelViewHolder> implements View.OnClickListener {
     Context context;
     ArrayList<Channel> channelsList;
+    IRecyclerViewListener mListener;
 
     public class ChannelViewHolder extends RecyclerView.ViewHolder
     {
@@ -37,9 +38,10 @@ public class ChannelRecyclerAdapter extends RecyclerView.Adapter<ChannelRecycler
     }
 
 
-    public ChannelRecyclerAdapter(Context context, ArrayList<Channel> channelsList) {
+    public ChannelRecyclerAdapter(Context context, ArrayList<Channel> channelsList,IRecyclerViewListener listener) {
         this.context = context;
         this.channelsList = channelsList;
+        this.mListener = listener;
     }
 
     @Override
@@ -71,6 +73,10 @@ public class ChannelRecyclerAdapter extends RecyclerView.Adapter<ChannelRecycler
 
     @Override
     public void onClick(View v) {
+       mListener.onChannelSelected(v);
+    }
 
+   public interface  IRecyclerViewListener{
+        void onChannelSelected(View view);
     }
 }
