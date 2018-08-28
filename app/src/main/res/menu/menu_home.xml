@@ -19,6 +19,11 @@
         android:title="Search"
         android:icon="@android:drawable/ic_menu_search"/>
 
+    <item
+        android:id ="@+id/quick_access_menu"
+        app:showAsAction="never"
+        android:title="Quick Access Menu"/>
+
 
 
 

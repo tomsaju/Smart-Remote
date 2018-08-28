@@ -1,6 +1,8 @@
 package ir.iot.smartremote;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import ir.iot.smartremote.fragment.RemoteLayoutFragment;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
     HashMap<String, String> remoteFunctionsMap;
     BottomSheetBehavior sheetBehavior;
     LinearLayout bottomSheet;
+    private static final int SPEECH_REQUEST_CODE = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 switch (newState) {
                     case BottomSheetBehavior.STATE_HIDDEN:
+                        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED: {
 
@@ -92,34 +97,34 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
 
         channelListRef = database.getReference("Channels");
         numberCodesMap = new HashMap<>();
-        numberCodesMap.put(0, "zero");
-        numberCodesMap.put(1, "one");
-        numberCodesMap.put(2, "two");
-        numberCodesMap.put(3, "thrjtu");
-        numberCodesMap.put(4, "0xffojtu");
-        numberCodesMap.put(5, "fibejtu");
-        numberCodesMap.put(6, "0sixgjtu");
-        numberCodesMap.put(7, "0fdgjtu");
-        numberCodesMap.put(8, "0sghgjtu");
-        numberCodesMap.put(9, "0sgsdfhgjtu");
+        numberCodesMap.put(0, "0xA1DE23DC");
+        numberCodesMap.put(1, "0xA1DEA35C");
+        numberCodesMap.put(2, "0xA1DE639C");
+        numberCodesMap.put(3, "0xA1DEE31C");
+        numberCodesMap.put(4, "0xA1DE916E");
+        numberCodesMap.put(5, "0xA1DE51AE");
+        numberCodesMap.put(6, "0xA1DED12E");
+        numberCodesMap.put(7, "0xA1DE31CE");
+        numberCodesMap.put(8, "0xA1DEC936");
+        numberCodesMap.put(9, "0xA1DE29D6");
 
 
         remoteFunctionsMap = new HashMap<>();
-        remoteFunctionsMap.put("1", "0xffteyt");
-        remoteFunctionsMap.put("2", "0xffteyt");
-        remoteFunctionsMap.put("3", "0xffteyt");
-        remoteFunctionsMap.put("4", "0xffteyt");
-        remoteFunctionsMap.put("5", "0xffteyt");
-        remoteFunctionsMap.put("6", "0xffteyt");
-        remoteFunctionsMap.put("7", "0xffteyt");
-        remoteFunctionsMap.put("8", "0xffteyt");
-        remoteFunctionsMap.put("9", "0xffteyt");
-        remoteFunctionsMap.put("0", "0xffteyt");
-        remoteFunctionsMap.put("Menu", "0xffteyt");
-        remoteFunctionsMap.put("Mute", "0xffteyt");
-        remoteFunctionsMap.put("Enter", "0xffteyt");
-        remoteFunctionsMap.put("Up", "0xffteyt");
-        remoteFunctionsMap.put("Back", "0xffteyt");
+        remoteFunctionsMap.put("CHANNELS", "0xA1DE49B6");
+        remoteFunctionsMap.put("GARDEN", "0xA1DE08F7");
+        remoteFunctionsMap.put("ON DEMAND", "0xA1DEF10E");
+        remoteFunctionsMap.put("SHOPPING", "0xA1DE6B94");
+        remoteFunctionsMap.put("CHANNEL+", "0xA1DE738C");
+        remoteFunctionsMap.put("CHANNEL-", "0xA1DEF30C");
+        remoteFunctionsMap.put("VOLUME+", "0xA1DE53AC");
+        remoteFunctionsMap.put("VOLUME-", "0xA1DE33CC");
+        remoteFunctionsMap.put("RED", "0xA1DE718E");
+        remoteFunctionsMap.put("GREEN", "0xA1DE39C6");
+        remoteFunctionsMap.put("YELLOW", "0xA1DEA956");
+        remoteFunctionsMap.put("BLUE", "0xA1DE817E");
+        remoteFunctionsMap.put("OK", "0xA1DEFB04");
+        remoteFunctionsMap.put("BACK", "0xA1DE9966");
+        remoteFunctionsMap.put("INFO", "0xA1DEA15E");
 
 
         channelRecyclerview = findViewById(R.id.mainList);
@@ -225,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
 
     public void onRemotePanelClicked(View view) {
         String btnText = ((Button) view).getText().toString();
-        sendData(remoteFunctionsMap.get(btnText), "NEC", 32, 0);
+        sendData(remoteFunctionsMap.get(btnText.toUpperCase()), "NEC", 32, 0);
     }
 
     @Override
@@ -242,18 +247,78 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.menu_mic:
-                Toast.makeText(getApplicationContext(),"Voice Search",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Voice Search", Toast.LENGTH_LONG).show();
+                displaySpeechRecognizer();
                 return true;
             case R.id.menu_power:
-                Toast.makeText(getApplicationContext(),"Switch On off",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Switch On off", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_search:
-                Toast.makeText(getApplicationContext(),"Search",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_LONG).show();
+                return true;
+            case R.id.quick_access_menu:
+                showQuickMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    private void showQuickMenu() {
+        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_HIDDEN) {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        } else {
+            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+    }
+
+
+    // Create an intent that can start the Speech Recognizer activity
+    private void displaySpeechRecognizer() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        // Start the activity, the intent will be populated with the speech text
+        startActivityForResult(intent, SPEECH_REQUEST_CODE);
+    }
+
+    // This callback is invoked when the Speech Recognizer returns.
+// This is where you process the intent and extract the speech text from the intent.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
+            List<String> results = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);
+            String spokenText = results.get(0);
+            Toast.makeText(this, spokenText, Toast.LENGTH_SHORT).show();
+            getChannelDetail(spokenText);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void getChannelDetail(String spokenText) {
+        for (Channel channel : channels) {
+            if (channel.getTitle().equalsIgnoreCase(spokenText)) {
+                gotoChannel(channel);
+            }
+        }
+    }
+
+    private void gotoChannel(Channel channel) {
+        Channel selectedChannel = channel;
+        Toast.makeText(this, selectedChannel.getTitle() + " clicked", Toast.LENGTH_SHORT).show();
+
+        int n = selectedChannel.getIndex();
+        while (n > 0) {
+            int d = n / 10;
+            int k = n - d * 10;
+            n = d;
+            System.out.println(k);
+            sendData(numberCodesMap.get(k), "NEC", 32, 0);
+        }
+    }
+
 }
