@@ -1,21 +1,26 @@
 package ir.iot.smartremote;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,11 +56,13 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
     BottomSheetBehavior sheetBehavior;
     LinearLayout bottomSheet;
     private static final int SPEECH_REQUEST_CODE = 0;
+    private RecyclerView mainList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         bottomSheet = findViewById(R.id.bottom_sheet);
 
@@ -241,6 +248,12 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.menu_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
         return true;
     }
 
@@ -249,29 +262,25 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
         int id = item.getItemId();
         switch (id) {
             case R.id.menu_mic:
-                Toast.makeText(getApplicationContext(), "Voice Search", Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(), "Voice Search", Toast.LENGTH_LONG).show();
                 displaySpeechRecognizer();
                 return true;
             case R.id.menu_power:
                 Toast.makeText(getApplicationContext(), "Switch On off", Toast.LENGTH_LONG).show();
                 return true;
             case R.id.menu_search:
-                Toast.makeText(getApplicationContext(), "Search", Toast.LENGTH_LONG).show();
+                showFullRemote();
                 return true;
             case R.id.quick_access_menu:
-                showQuickMenu();
+                showAllChannels();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void showQuickMenu() {
-        if (sheetBehavior.getState() == BottomSheetBehavior.STATE_HIDDEN) {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-        } else {
-            sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        }
+    private void showAllChannels() {
+        startActivity(new Intent(MainActivity.this, AllChannelsActivity.class));
     }
 
 
@@ -321,4 +330,26 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
         }
     }
 
+    private void showFullRemote(){
+        getSupportFragmentManager().beginTransaction().add(android.R.id.content,new RemoteLayoutFragment()).commit();
+    }
+
+    private void hideFullRemote(){
+        FragmentManager manager =getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=manager.beginTransaction();
+        Fragment MyFraglastFrag=manager.findFragmentById(android.R.id.content);
+        if(MyFraglastFrag!=null&&MyFraglastFrag.isVisible()) {
+            fragmentTransaction.remove(MyFraglastFrag);
+            fragmentTransaction.commit();
+        }else{
+            super.onBackPressed();
+        }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        hideFullRemote();
+    }
 }

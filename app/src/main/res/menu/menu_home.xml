@@ -17,12 +17,13 @@
         android:id="@+id/menu_search"
         app:showAsAction="ifRoom"
         android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         android:icon="@android:drawable/ic_menu_search"/>
 
     <item
         android:id ="@+id/quick_access_menu"
         app:showAsAction="never"
-        android:title="Quick Access Menu"/>
+        android:title="All Channels"/>
 
 
 
