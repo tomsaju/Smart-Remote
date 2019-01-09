@@ -22,6 +22,7 @@
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
+           android:onClick="onRemotePanelDigitClicked"
            android:layout_height="wrap_content"
            android:text="1"/>
 
@@ -29,17 +30,20 @@
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelDigitClicked"
            android:text="2"/>
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelDigitClicked"
            android:text="3"/>
 
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelDigitClicked"
            android:text="4"/>
 
    </LinearLayout>
@@ -55,23 +59,27 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="5"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="6"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="7"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="8"/>
 
     </LinearLayout>
@@ -86,12 +94,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="9"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelDigitClicked"
             android:text="0"/>
 
 

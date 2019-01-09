@@ -16,7 +16,7 @@
     <item
         android:id="@+id/menu_search"
         app:showAsAction="ifRoom"
-        android:title="Search"
+        android:title="Full Remote"
         app:actionViewClass="android.support.v7.widget.SearchView"
         android:icon="@android:drawable/ic_menu_search"/>
 
@@ -25,8 +25,13 @@
         app:showAsAction="never"
         android:title="All Channels"/>
 
+    <item
+        android:id ="@+id/add_channel"
+        app:showAsAction="never"
+        android:title="Add Channel"/>
 
-
-
+    <item android:id="@+id/reconnect"
+        app:showAsAction="never"
+        android:title="Reconnect"/>
 
 </menu>
