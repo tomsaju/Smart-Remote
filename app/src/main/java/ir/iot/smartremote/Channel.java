@@ -18,6 +18,14 @@ public class Channel {
         this.imageUrl = imageUrl;
     }
 
+    public Channel(int index, String title, String imageUrl,String category,String language) {
+        this.index = index;
+        this.title = title;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.language = language;
+    }
+
     public Channel() {
     }
 

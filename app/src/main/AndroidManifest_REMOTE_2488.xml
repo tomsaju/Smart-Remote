@@ -31,12 +31,7 @@
         <activity
             android:name=".AllChannelsActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-        <activity android:name=".SetupRemoteActivity" />
-        <activity android:name=".SettingsActivity"></activity>
-
         <activity android:name=".NewChannelActivity"></activity>
-
     </application>
 
 </manifest>
