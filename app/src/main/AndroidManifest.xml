@@ -27,8 +27,11 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllChannelsActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity
+            android:name=".AllChannelsActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".SetupRemoteActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

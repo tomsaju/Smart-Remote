@@ -13,6 +13,13 @@
     android:layout_margin="15dp"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Long press a button to edit the function"
+        android:paddingBottom="5dp"
+        android:textAlignment="center"/>
+
    <LinearLayout
        android:layout_width="match_parent"
        android:orientation="horizontal"
@@ -23,23 +30,27 @@
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelClicked"
            android:text="1"/>
 
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelClicked"
            android:text="2"/>
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelClicked"
            android:text="3"/>
 
        <Button
            android:layout_width="0dp"
            android:layout_weight="1"
            android:layout_height="wrap_content"
+           android:onClick="onRemotePanelClicked"
            android:text="4"/>
 
    </LinearLayout>
@@ -55,23 +66,27 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="5"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="6"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="7"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="8"/>
 
     </LinearLayout>
@@ -86,12 +101,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="9"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="0"/>
 
 
@@ -108,23 +125,27 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="VOL-"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="VOL+"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="CH -"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="CH+"/>
 
     </LinearLayout>
@@ -143,26 +164,31 @@
             android:text="up"
             android:layout_row="0"
             android:layout_column="1"/>
+        android:onClick="onRemotePanelClicked"
 
         <Button
             android:text="right"
             android:layout_row="1"
             android:layout_column="2"
+            android:onClick="onRemotePanelClicked"
             />
         <Button
             android:text="left"
             android:layout_row="1"
             android:layout_column="0"
+            android:onClick="onRemotePanelClicked"
             />
         <Button
             android:text="Down"
             android:layout_row="2"
             android:layout_column="1"
+            android:onClick="onRemotePanelClicked"
             />
         <Button
             android:text="Enter"
             android:layout_row="1"
             android:layout_column="1"
+            android:onClick="onRemotePanelClicked"
             />
 
     </GridLayout>
@@ -177,18 +203,50 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="Back"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="Mute"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
             android:text="Recall"/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
+            android:text="Menu"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
+            android:text="Custom1"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="onRemotePanelClicked"
+            android:text="Custom2"/>
 
 
 

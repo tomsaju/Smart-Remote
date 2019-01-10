@@ -25,6 +25,16 @@
         app:showAsAction="never"
         android:title="All Channels"/>
 
+    <item
+        android:id ="@+id/setup_remote"
+        app:showAsAction="never"
+        android:title="Setup Remote"/>
+
+    <item
+        android:id="@+id/add_channel"
+        app:showAsAction="never"
+        android:title="Add A Channel"/>
+
 
 
 

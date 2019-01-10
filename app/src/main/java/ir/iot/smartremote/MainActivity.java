@@ -214,6 +214,8 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+
     }
 
     @Override
@@ -274,9 +276,22 @@ public class MainActivity extends AppCompatActivity implements ChannelRecyclerAd
             case R.id.quick_access_menu:
                 showAllChannels();
                 return true;
+            case R.id.setup_remote:
+                setupRemote();
+                return true;
+            case R.id.add_channel:
+                AddChannel();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void AddChannel() {
+        //show dialog to add channel
+    }
+
+    private void setupRemote() {
+        startActivity(new Intent(this,SetupRemoteActivity.class));
     }
 
     private void showAllChannels() {
